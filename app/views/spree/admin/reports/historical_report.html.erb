@@ -1,0 +1,25 @@
+<% content_for :page_title do %>
+  <%= link_to Spree.t(:reports), spree.admin_reports_url %> /
+  <%= Spree.t(:historical_report) %>
+<% end %>
+
+<div class="well">
+  <%= render partial: 'spree/admin/shared/historical_report_order_criteria' %>
+</div>
+
+<table class="table table-bordered admin-report" data-hook="sales_total">
+  <thead>
+    <tr>
+      <th><%= Spree.t(:sku) %></th>
+      <th><%= Spree.t(:date) %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @totals.each do |key, row| %>
+      <tr>
+        <td><%= key %></td>
+        <td><%= row[:date] %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

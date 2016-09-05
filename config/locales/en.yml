@@ -3,3 +3,8 @@
 
 en:
   hello: "Hello world"
+
+en:
+  spree:
+    historical_report: "Historical report"
+    historical_report_description: "Historical report of out of stock products"

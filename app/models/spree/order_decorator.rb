@@ -1,12 +1,13 @@
 Spree::Order.class_eval do
 
-  def say_hello
-    puts 'Hello!'
-    puts "This order cost #{total}"
-    # do something interesting, like notify an external webservice about this order
+  def check_out_of_stock
+    byebug
+    self.products.each do |product|
+      Spree::OutOfStock.check_stock product
+    end
   end
 
 end
 
 Spree::Order.state_machine.after_transition :to => :complete,
-                                            :do => :say_hello
+                                            :do => :check_out_of_stock
