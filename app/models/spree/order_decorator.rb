@@ -1,7 +1,6 @@
 Spree::Order.class_eval do
 
   def check_out_of_stock
-    byebug
     self.products.each do |product|
       Spree::OutOfStock.check_stock product
     end
