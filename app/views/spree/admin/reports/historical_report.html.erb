@@ -17,7 +17,7 @@
   <tbody>
     <% @totals.each do |key, row| %>
       <tr>
-        <td><%= key %></td>
+        <td><%= link_to key, row[:url] %></td>
         <td><%= row[:date] %></td>
       </tr>
     <% end %>

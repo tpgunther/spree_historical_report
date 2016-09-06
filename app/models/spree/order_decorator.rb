@@ -1,8 +1,8 @@
 Spree::Order.class_eval do
 
   def check_out_of_stock
-    self.products.each do |product|
-      Spree::OutOfStock.check_stock product
+    self.line_items.each do |line_item|
+      Spree::OutOfStock.check_stock line_item.variant
     end
   end
 

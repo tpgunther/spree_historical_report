@@ -19,7 +19,7 @@ Spree::Admin::ReportsController.class_eval do
       params[:q][:date_lt] = Time.zone.parse(params[:q][:date_lt]).end_of_day rescue ""
     end
 
-    params[:q][:s] ||= "date desc"
+    params[:q][:s] ||= "date asc"
 
     @search = Spree::OutOfStock.ransack(params[:q])
     @out_of_stocks = @search.result
@@ -28,6 +28,7 @@ Spree::Admin::ReportsController.class_eval do
     @out_of_stocks.each do |out_of_stock|
       @totals[out_of_stock.variant.sku] = {}
       @totals[out_of_stock.variant.sku][:date] = out_of_stock.date
+      @totals[out_of_stock.variant.sku][:url] = admin_product_path out_of_stock.variant.product.master
     end
 
   end

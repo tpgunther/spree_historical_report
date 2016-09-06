@@ -3,6 +3,17 @@ Spree Historical Report
 
 This gem allows Spree to store and generate a simple report of the SKU and the date when a products is out of stock.
 
+## Demo
+
+A demo is available at http://spree-historical-report.herokuapp.com
+
+The historical report is in the administration backend, in the report section, under historical report
+
+  ```
+    user: spree@example.com
+    pass: spree123
+  ```
+
 ## Installation
 
 1. Add this extension to your Gemfile with this line:
