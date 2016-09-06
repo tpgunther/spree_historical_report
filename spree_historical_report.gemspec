@@ -4,7 +4,7 @@ Gem::Specification.new do |s|
   s.name        = 'spree_historical_report'
   s.version     = '3.1.0'
   s.summary     = 'Basic report of out of stock products for Spree '
-  s.description = 'Large description'
+  s.description = 'This gem allows Spree to store and generate a simple report of the SKU and the date when a products is out of stock.'
   s.required_ruby_version = '>= 2.1.0'
 
   s.author    = 'Tomás Günther'
