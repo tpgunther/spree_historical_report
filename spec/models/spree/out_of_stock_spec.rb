@@ -39,25 +39,17 @@ module::Spree
 
     end
 
-    # describe "when buying all products available" do
-    #   # let(:order) { Spree::Order.create(email: 'test@example.com') }
-    #   #
-    #   # before do
-    #   #   order.update_column :state, 'complete'
-    #   # end
-    #
-    #   it "should create a new out of stock record" do
-    #     product = create(:product_in_stock)
-    #     line_item = create(:line_item, variant_id: product.master.id, quantity: product.total_on_hand)
-    #     order = create(:order, line_items: [line_item])
-    #     order.update_column :state, 'complete'
-    #     order.finalize!
-    #     order.fulfill!
-    #     #expect(Variant.find(product.master.id).total_on_hand).to eq(0)
-    #     expect(OutOfStock.last.variant_id).to eq(product.master.id)
-    #   end
-    #
-    # end
+    describe "when buying all products available" do
+    
+      it "should create a new out of stock record" do
+        product = create(:product_in_stock)
+        line_item = create(:line_item, variant_id: product.master.id, quantity: product.total_on_hand)
+        order = create(:order_ready_to_ship, line_items: [line_item] )
+        order.finalize!
+        expect(OutOfStock.find_by(variant_id: product.master.id).variant_id).to eq(product.master.id)
+      end
+
+    end
 
   end
 
